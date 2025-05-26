@@ -1,8 +1,14 @@
-gcc mpi_conv.c -I"C:\Program Files (x86)\Microsoft SDKs\MPI\Include" -L"C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64" -lmsmpi -o mpi_conv.exe
+#####MPI
 
+gcc mpi_conv.c -I"C:\Program Files (x86)\Microsoft SDKs\MPI\Include" -L"C:\Program Files (x86)\Microsoft SDKs\MPI\Lib\x64" -lmsmpi -o mpi_conv.exe
 
 
 mpiexec -n 1 mpi_conv.exe ./waterfall_1920_2520.raw 1920 2520 20 rgb
 
 set OMP_NUM_THREADS=10
 ./main_omp.exe ../waterfall_1920_2520.raw 1920 2520 20 rgb
+
+
+###########OMP
+gcc -fopenmp omp_conv.c -o omp_conv.exe
+.\omp_conv.exe ../waterfall_1920_2520.raw 1920 2520 20 rgb 4
